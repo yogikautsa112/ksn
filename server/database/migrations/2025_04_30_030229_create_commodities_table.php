@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('commodities', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->index();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->enum('role', ['admin', 'user']);
-            $table->rememberToken();
+            $table->enum('type', ['pangan', 'non-pangan']);
+            $table->string('unit', 20);
+            $table->text('origin_location')->nullable();
+            $table->date('harvest_date')->nullable();
+            $table->enum('quality_grade', ["a", "b", "c"])->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('commodities');
     }
 };
