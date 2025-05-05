@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('markets', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->enum('type', ['local','nasional','international']);
+            $table->enum('type', ['LOCAL','NASIONAL','INTERNASIONAL']);
             $table->text('location');
             $table->timestamps();
         });

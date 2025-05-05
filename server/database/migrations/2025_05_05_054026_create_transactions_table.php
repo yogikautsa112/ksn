@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('seller_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignUuid('buyer_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignUuid('commodity_id')->constrained('commodities')->cascadeOnDelete();
+            $table->uuid('seller_id')->constrained('users')->cascadeOnDelete();
+            $table->uuid('buyer_id')->constrained('users')->cascadeOnDelete();
+            $table->uuid('commodity_id')->constrained('commodities')->cascadeOnDelete();
+            $table->uuid('shipment_id')->nullable()->constrained('shipments')->nullOnDelete();
+            $table->uuid('market_id')->nullable()->constrained('markets')->nullOnDelete();
             $table->integer('quantity');
-            $table->decimal('price_per_unit',12,2);
-            $table->enum('status',['pending','confirmed','shipped','completed']);
-            $table->foreignId('market_id')->nullable()->constrained('markets')->nullOnDelete();
-            $table->foreignId('shipment_id')->nullable()->constrained('shipments')->nullOnDelete();
+            $table->decimal('price_per_unit', 12, 2);
+            $table->enum('status', ['PENDING', 'CONFIRMED', 'SHIPPED', 'COMPLETED']);
             $table->timestamps();
         });
     }
