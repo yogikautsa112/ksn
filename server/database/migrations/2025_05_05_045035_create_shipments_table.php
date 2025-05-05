@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('shipments', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('trancsaction_id');
-            $table->uuid('origin_wharehouse_id');
-            $table->uuid('destination_market_id');
+            $table->uuid('trancsaction_id')->constrained('transactions')->cascadeOnDelete();
+            $table->uuid('origin_wharehouse_id')->constrained('wharehouses')->cascadeOnDelete();
+            $table->uuid('destination_market_id')->constrained('markets')->cascadeOnDelete();
             $table->enum('status', ['PENDING', 'IN_TRANSIT', 'DELIVERED']);
             $table->string('curent_location');
             $table->dateTime('departure_time');
