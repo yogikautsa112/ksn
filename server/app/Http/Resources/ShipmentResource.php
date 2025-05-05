@@ -10,11 +10,11 @@ class ShipmentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'transaction_id' => $this->trancsaction_id,
-            'origin_wharehouse_id' => $this->origin_wharehouse_id,
-            'destination_market_id' => $this->destination_market_id,
+            'transaction' => new TransactionResource($this->whenLoaded('transaction')),
+            'origin_warehouse' => new WarehouseResource($this->whenLoaded('originWarehouse')),
+            'destination_market' => new MarketResource($this->whenLoaded('destinationMarket')),
             'status' => $this->status,
-            'current_location' => $this->curent_location,
+            'current_location' => $this->current_location,
             'departure_time' => $this->departure_time,
             'arrival_time' => $this->arrival_time,
             'created_at' => $this->created_at,

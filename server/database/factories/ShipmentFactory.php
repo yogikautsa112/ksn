@@ -14,7 +14,7 @@ class ShipmentFactory extends Factory
     {
         return [
             'id' => Str::uuid(),
-            'transaction_id' => Str::uuid(),
+            'transaction_id' => Str::uuid(), // Perbaiki typo sesuai dengan migrasi
             'origin_wharehouse_id' => Str::uuid(),
             'destination_market_id' => Str::uuid(),
             'status' => $this->faker->randomElement([
@@ -22,7 +22,7 @@ class ShipmentFactory extends Factory
                 Shipment::IN_TRANSIT,
                 Shipment::DELIVERED
             ]),
-            'current_location' => $this->faker->city(),
+            'curent_location' => $this->faker->city(), // Perbaiki typo sesuai dengan migrasi
             'departure_time' => $this->faker->dateTimeBetween('-1 week', 'now'),
             'arrival_time' => $this->faker->dateTimeBetween('now', '+1 week'),
             'created_at' => now(),

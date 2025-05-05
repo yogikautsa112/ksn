@@ -26,4 +26,13 @@ class Organization extends Model
     protected $casts = [
         'verified' => 'boolean',
     ];
+
+    public function users() {
+        return $this->hasMany(User::class);
+    }
+    
+    public function commodities() {
+        return $this->hasMany(Commodity::class);
+    }
+    
 }

@@ -17,4 +17,13 @@ class Commodity extends Model
     public const A = "a";
     public const B = "b";
     public const C = "c";
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
