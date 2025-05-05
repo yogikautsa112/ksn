@@ -7,6 +7,7 @@ use App\Models\Shipment;
 use App\Services\ShipmentService;
 use App\Http\Controllers\ShipmentController;
 use App\Http\Requests\ShipmentRequest;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Ramsey\Uuid\Uuid;
 use Mockery;
@@ -55,8 +56,8 @@ class ShipmentTest extends TestCase
             'destination_market_id' => Uuid::uuid4()->toString(),
             'status' => Shipment::PENDING,
             'current_location' => 'Jakarta Warehouse',
-            'departure_time' => '2024-01-01 08:00:00',
-            'arrival_time' => '2024-01-02 15:00:00'
+            'departure_time' => Carbon::now()->toDateTimeString(),
+            'arrival_time' => Carbon::now()->addDays(7)->toDateTimeString()
         ];
 
         $shipment = Shipment::factory()->make($data);
@@ -77,7 +78,7 @@ class ShipmentTest extends TestCase
         $data = [
             'status' => Shipment::IN_TRANSIT,
             'current_location' => 'Bandung Distribution Center',
-            'arrival_time' => '2024-01-03 10:00:00'
+            'arrival_time' => Carbon::now()->addDays(14)->toDateTimeString()
         ];
 
         $shipment = Shipment::factory()->make($data);

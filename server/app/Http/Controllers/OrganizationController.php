@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrganizationRequest;
 use App\Http\Resources\OrganizationResource;
 use App\Services\OrganizationService;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class OrganizationController extends Controller
@@ -30,7 +31,7 @@ class OrganizationController extends Controller
     {
         try {
             $organization = $this->organizationService->store($request->validated());
-            return response()->json(new OrganizationResource($organization), 201);
+            return response()->json(new OrganizationResource( $organization), 201);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
         }
@@ -49,7 +50,7 @@ class OrganizationController extends Controller
     public function update(OrganizationRequest $request, int $id): JsonResponse
     {
         try {
-            $organization = $this->organizationService->update($request->validated(), $id);
+            $organization = $this->organizationService->update($request->validated(), $id);id: 
             return response()->json(new OrganizationResource($organization), 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);

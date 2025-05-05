@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ShipmentRequest;
 use App\Http\Resources\ShipmentResource;
 use App\Services\ShipmentService;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class ShipmentController extends Controller
