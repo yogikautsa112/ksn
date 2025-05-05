@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CommodityController;
+use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\ShipmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::apiResource('commodity', CommodityController::class);
 Route::apiResource('organization', OrganizationController::class);
+Route::apiResource('shipment', ShipmentController::class);
