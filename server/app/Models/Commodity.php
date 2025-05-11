@@ -12,7 +12,7 @@ class Commodity extends Model
     protected $fillable = ["id", "name", "type", "unit", "origin_location", "harvest_date", "quality_grade"];
 
     public const PANGAN = "pangan";
-    public const NON_PANGAN = "non_pangan";
+    public const NON_PANGAN = "non-pangan";
 
     public const A = "a";
     public const B = "b";

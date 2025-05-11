@@ -28,6 +28,7 @@ class ShipmentTest extends TestCase
 
     public function testIndex(): void
     {
+        // Gunakan make() daripada create() untuk menghindari penyimpanan ke database
         $shipments = Shipment::factory()->count(3)->make();
         $this->shipmentService->shouldReceive('index')->once()->andReturn($shipments);
 
