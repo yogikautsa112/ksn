@@ -33,11 +33,11 @@ class TransactionFactory extends Factory
 
         return [
             'id' => Str::uuid(),
-            'seller_id' => User::factory(),
-            'buyer_id' => User::factory(),
-            'commodity_id' => Commodity::factory(),
-            'shipment_id' => $this->faker->boolean(75) ? Shipment::factory() : null,
-            'market_id' => $this->faker->boolean(75) ? Market::factory() : null,
+            'seller_id' => fn() => User::factory()->create()->id,
+            'buyer_id' => fn() => User::factory()->create()->id,
+            'commodity_id' => fn() => Commodity::factory()->create()->id,
+            'shipment_id' => fn() => Shipment::factory()->make()->id, // Gunakan make() untuk menghindari rekursi
+            'market_id' => fn() => Market::factory()->create()->id,
             'quantity' => $this->faker->numberBetween(1, 500),
             'price_per_unit' => $this->faker->randomFloat(2, 5, 2000),
             'status' => $this->faker->randomElement($statuses),

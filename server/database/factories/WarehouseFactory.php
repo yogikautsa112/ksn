@@ -28,7 +28,7 @@ class WarehouseFactory extends Factory
     {
         return [
             'id' => Str::uuid(),
-            'manager_id' => User::factory(),
+            'manager_id' => fn() =>  User::factory()->create()->id,
             'name' => $this->faker->company() . ' Warehouse',
             'location' => $this->faker->address(),
             'capacity' => $this->faker->numberBetween(100, 10000),

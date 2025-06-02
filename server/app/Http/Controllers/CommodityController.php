@@ -24,7 +24,6 @@ class CommodityController extends Controller
             return response()->json($e->getMessage(), 400);
         }
     }
-
     
     public function store(Request $request)
     {
