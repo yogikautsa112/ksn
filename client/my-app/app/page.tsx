@@ -16,7 +16,7 @@ export default function Home() {
               <div className="w-10 h-10 rounded-full bg-teal-600 flex items-center justify-center">
                 <RefreshCw className="h-5 w-5 text-white" />
               </div>
-              <h1 className="text-2xl font-bold text-teal-900">AgriSupply</h1>
+              <h1 className="text-2xl font-bold text-teal-900">AhriSupply</h1>
             </div>
             <div className="flex items-center space-x-4">
               <Link href="#" className="text-teal-700 hover:text-teal-900 font-medium hidden md:block">
