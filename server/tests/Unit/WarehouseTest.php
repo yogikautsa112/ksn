@@ -31,7 +31,7 @@ class WarehouseTest extends TestCase
         $this->warehouseService->shouldReceive('index')->once()->andReturn($warehouses);
 
         $response = $this->controller->index();
-        
+
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertJson($response->getContent());
     }
