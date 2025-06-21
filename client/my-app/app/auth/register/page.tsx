@@ -66,9 +66,15 @@ export default function Register() {
 
       if (response.ok) {
         toast.success("Registrasi berhasil", {
-          description: "Silakan login dengan akun yang telah dibuat",
+          description: "Anda akan dialihkan ke proses onboarding",
         });
-        router.push("/auth/login");
+        
+        // Set flag for onboarding
+        localStorage.setItem("needsOnboarding", "true");
+        localStorage.setItem("isNewUser", "true");
+        
+        // Redirect to onboarding
+        router.push("/onboarding");
       } else {
         const data = await response.json();
         setError(data.message || "Registrasi gagal");

@@ -19,9 +19,8 @@ class MarketController extends Controller
     public function index(): JsonResponse
     {
         try {
-            $market = $this->marketService->index();
-            return response()->json(MarketResource::collection($market), 200);
-            status:
+            $markets = $this->marketService->index();
+            return response()->json(MarketResource::collection($markets), 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
         }
@@ -30,12 +29,13 @@ class MarketController extends Controller
     public function show(string $id): JsonResponse
     {
         try {
-            $shipment = $this->marketService->detail($id);
-            return response()->json(new MarketResource($shipment), 200);
+            $market = $this->marketService->detail($id);
+            return response()->json(new MarketResource($market), 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 404);
         }
     }
+    
     public function store(MarketRequest $request): JsonResponse
     {
         try {
@@ -45,7 +45,6 @@ class MarketController extends Controller
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
-
 
     public function update(MarketRequest $request, string $id): JsonResponse
     {
@@ -61,7 +60,7 @@ class MarketController extends Controller
     {
         try {
             $this->marketService->destroy($id);
-            return response()->json(['message' => 'Shipment deleted successfully'], 200);
+            return response()->json(['message' => 'Market deleted successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
         }

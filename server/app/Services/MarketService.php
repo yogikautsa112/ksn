@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Repositories\MarketRepository;
-use App\Http\Resources\MarketResource;
 
 class MarketService
 {
@@ -16,26 +15,22 @@ class MarketService
 
     public function index()
     {
-        $market = $this->marketRepository->getAll();
-        return MarketResource::collection($market);
+        return $this->marketRepository->getAll();
     }
 
     public function detail($id)
     {
-        $market = $this->marketRepository->getById($id);
-        return new marketResource($market);
+        return $this->marketRepository->getById($id);
     }
 
     public function store(array $data)
     {
-        $market = $this->marketRepository->create($data);
-        return new marketResource($market);
+        return $this->marketRepository->create($data);
     }
 
     public function update(array $data, $id)
     {
-        $market = $this->marketRepository->update($data, $id);
-        return new marketResource($market);
+        return $this->marketRepository->update($data, $id);
     }
 
     public function destroy($id)

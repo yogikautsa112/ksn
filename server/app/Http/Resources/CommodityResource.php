@@ -11,7 +11,9 @@ class CommodityResource extends JsonResource {
             'unit' => $this->unit,
             'origin_location' => $this->origin_location,
             'harvest_date'=> $this->harvest_date,
-            'quality_grade'
+            'quality_grade' => $this->quality_grade,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

@@ -16,9 +16,18 @@ class Market extends Model
         'location'
     ];
 
-    public CONST LOCAL = 'local';
-    public CONST NASIONAL = 'nasional';
-    public CONST INTERNATIONAL = 'international';
+    public const LOCAL = 'LOCAL';
+    public const NASIONAL = 'NASIONAL';
+    public const INTERNATIONAL = 'INTERNASIONAL';
+
+    public static function getTypes()
+    {
+        return [
+            self::LOCAL,
+            self::NASIONAL,
+            self::INTERNATIONAL,
+        ];
+    }
 
     protected $table = 'markets';
 }

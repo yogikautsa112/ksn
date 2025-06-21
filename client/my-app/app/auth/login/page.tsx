@@ -55,7 +55,7 @@ export default function Login() {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          "X-XSRF-TOKEN": decodeURIComponent(xsrfToken), // Tambahkan XSRF token
+          "X-XSRF-TOKEN": decodeURIComponent(xsrfToken),
         },
         credentials: "include",
         body: JSON.stringify(formData),
@@ -65,7 +65,15 @@ export default function Login() {
         toast.success("Login berhasil", {
           description: "Anda akan dialihkan ke dashboard",
         });
-        router.push("/admin");
+        
+        // Check if user needs onboarding
+        const needsOnboarding = localStorage.getItem("needsOnboarding") === "true";
+        if (needsOnboarding) {
+          localStorage.removeItem("needsOnboarding");
+          router.push("/onboarding");
+        } else {
+          router.push("/admin");
+        }
       } else {
         const data = await response.json();
         setError(data.message || "Login gagal");
